@@ -24,7 +24,7 @@
 */
 
 #define  TASK_STK_SIZE                 512       /* Size of each task's stacks (# of WORDs)            */
-#define  N_TASKS                        2       /* Number of identical tasks                          */
+#define  N_TASKS                        4       /* Number of identical tasks                          */
 
 #define HORIZONTAL 3
 #define VERTICAL 3
@@ -63,7 +63,7 @@ void GameStatus(INT8U player, INT8U value);
 
 INT8U PositionCalculation(char board[3][3], INT8U selection, char input);
 INT8U GameLogic(char board[HORIZONTAL][VERTICAL]);
-void GameStatus(INT8U player, INT8U value)
+void GameStatus(INT8U player, INT8U value);
 
 
 /*$PAGE*/
@@ -105,10 +105,10 @@ void TaskStart(void *pdata)
     pdata = pdata;                                         /* Prevent compiler warning                 */
 
     //OSTaskCreate(TicTacToe, (void *)&symbol, (void *)&TaskStk[0][TASK_STK_SIZE - 1], 1);
-    OSTaskCreate(DrawBoard, NULL, (void *)&TaskStk[0][TASK_STK_SIZE - 1], 1);
-    OSTaskCreate(Player1, (void *)&symbol, (void *)&TaskStk[0][TASK_STK_SIZE - 1], 2);
-    OSTaskCreate(Player2, (void *)&symbol, (void *)&TaskStk[0][TASK_STK_SIZE - 1], 3);
-    OSTaskCreate(GameStatus, NULL, (void *)&TaskStk[0][TASK_STK_SIZE - 1], 4);
+    OSTaskCreate(DrawBoard, (void *)&symbol, (void *)&TaskStk[0][TASK_STK_SIZE - 1], 1);
+    OSTaskCreate(Player1, (void *)&symbol, (void *)&TaskStk[1][TASK_STK_SIZE - 1], 2);
+    OSTaskCreate(Player2, (void *)&symbol, (void *)&TaskStk[2][TASK_STK_SIZE - 1], 3);
+    OSTaskCreate(GameStatus, (void *)&symbol, (void *)&TaskStk[3][TASK_STK_SIZE - 1], 4);
 
     for (;;) {
 
@@ -242,7 +242,7 @@ void Player2(void *data){
         if (counter > 3)
         {
             if (GameLogic(board) == 1)
-                GameStatus(1,4);
+                GameStatus(2,4);
         }
     }
 }

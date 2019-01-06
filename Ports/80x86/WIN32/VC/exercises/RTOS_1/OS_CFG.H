@@ -55,7 +55,7 @@
 #define OS_TICKS_PER_SEC         50    /* Set the number of ticks in one second                        */
 
                                        /* ----------------------- EVENT FLAGS ------------------------ */
-#define OS_FLAG_EN                0    /* Enable (1) or Disable (0) code generation for EVENT FLAGS    */
+#define OS_FLAG_EN                1    /* Enable (1) or Disable (0) code generation for EVENT FLAGS    */
 #define OS_FLAG_WAIT_CLR_EN       0    /* Include code for Wait on Clear EVENT FLAGS                   */
 #define OS_FLAG_ACCEPT_EN         0    /*     Include code for OSFlagAccept()                          */
 #define OS_FLAG_DEL_EN            0    /*     Include code for OSFlagDel()                             */
@@ -96,7 +96,7 @@
 
                                        /* ------------------------ SEMAPHORES ------------------------ */
 #define OS_SEM_EN                 1   /* Enable (1) or Disable (0) code generation for SEMAPHORES     */
-#define OS_SEM_ACCEPT_EN          0    /*    Include code for OSSemAccept()                            */
+#define OS_SEM_ACCEPT_EN          1    /*    Include code for OSSemAccept()                            */
 #define OS_SEM_DEL_EN             0    /*    Include code for OSSemDel()                               */
 #define OS_SEM_QUERY_EN           0   /*    Include code for OSSemQuery()                             */
 
